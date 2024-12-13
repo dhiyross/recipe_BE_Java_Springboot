@@ -1,6 +1,7 @@
 package dev.rossy.recipe.recipe;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -41,27 +42,48 @@ public class RecipeController {
     }
 
 
-    //post
+    // POST
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("")
-    void create(@Valid @RequestBody Recipe recipe){
+    ResponseEntity<String> create(@Valid @RequestBody Recipe recipe) {
         jdbcClientRecipeRepository.create(recipe);
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body("Recipe '" + recipe.name() + "' with ID " + recipe.id() + " created successfully!");
     }
 
-    //put
-    @ResponseStatus(HttpStatus.NO_CONTENT)
+    // PUT
+    @ResponseStatus(HttpStatus.OK)
     @PutMapping("/{id}")
-    void update(@Valid @RequestBody Recipe recipe, @PathVariable Integer id){
+    ResponseEntity<String> update(@Valid @RequestBody Recipe recipe, @PathVariable Integer id) {
+        Optional<Recipe> existingRecipe = recipeRepository.findById(id);
+
+        if (existingRecipe.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("Recipe with ID " + id + " not found!");
+        }
+
         recipeRepository.save(recipe);
+        return ResponseEntity.status(HttpStatus.OK)
+                .body("Recipe '" + existingRecipe.get().name() + "' with ID " + id + " updated successfully!");
     }
 
-    //delete
-    @ResponseStatus(HttpStatus.NO_CONTENT)
+    // DELETE
+    @ResponseStatus(HttpStatus.OK)
     @DeleteMapping("/{id}")
-    void delete(@PathVariable Integer id){
-        recipeRepository.delete(recipeRepository.findById(id).get());
-    }
+    ResponseEntity<String> delete(@PathVariable Integer id) {
+        Optional<Recipe> existingRecipe = recipeRepository.findById(id);
 
+        if (existingRecipe.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("Recipe with ID " + id + " not found!");
+        }
+
+        String recipeName = existingRecipe.get().name();
+        recipeRepository.delete(existingRecipe.get());
+
+        return ResponseEntity.status(HttpStatus.OK)
+                .body("Recipe '" + recipeName + "' with ID " + id + " deleted successfully!");
+    }
 
 }
 

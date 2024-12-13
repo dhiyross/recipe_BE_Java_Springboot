@@ -1,0 +1,4 @@
+package dev.rossy.recipe;
+
+public class WelcomeMessage {
+}

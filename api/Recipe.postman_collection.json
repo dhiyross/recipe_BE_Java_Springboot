@@ -7,7 +7,7 @@
 	},
 	"item": [
 		{
-			"name": "findAll",
+			"name": "findAllRecipe",
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -27,12 +27,12 @@
 			"response": []
 		},
 		{
-			"name": "findById",
+			"name": "findByIdRecipe",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8084/api/recipes/1",
+					"raw": "http://localhost:8084/api/recipes/2",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -41,7 +41,7 @@
 					"path": [
 						"api",
 						"recipes",
-						"1"
+						"2"
 					]
 				}
 			},
@@ -53,7 +53,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8084/api/recipes/by-cuisine?cuisine=Asian",
+					"raw": "http://localhost:8084/api/recipes/cuisine/Asian",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -62,25 +62,20 @@
 					"path": [
 						"api",
 						"recipes",
-						"by-cuisine"
-					],
-					"query": [
-						{
-							"key": "cuisine",
-							"value": "Asian"
-						}
+						"cuisine",
+						"Asian"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "findByTag",
+			"name": "findByDifficulty",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8084/api/recipes/search?tag=Asian",
+					"raw": "http://localhost:8084/api/recipes/difficulty/Medium",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -89,26 +84,21 @@
 					"path": [
 						"api",
 						"recipes",
-						"search"
-					],
-					"query": [
-						{
-							"key": "tag",
-							"value": "Asian"
-						}
+						"difficulty",
+						"Medium"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "create",
+			"name": "createRecipe",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"id\": 32,\r\n    \"name\": \"Spaghetti Carbonara\",\r\n    \"ingredients\": [\r\n        \"Spaghetti\",\r\n        \"Egg yolks\",\r\n        \"Grated Parmesan cheese\",\r\n        \"Pancetta\",\r\n        \"Garlic\",\r\n        \"Salt and black pepper\",\r\n        \"Olive oil\"\r\n    ],\r\n    \"instructions\": [\r\n        \"Cook spaghetti in salted boiling water until al dente.\",\r\n        \"Cook pancetta in olive oil until crispy, then add minced garlic.\",\r\n        \"In a bowl, whisk egg yolks and Parmesan cheese.\",\r\n        \"Drain spaghetti, reserving some pasta water.\",\r\n        \"Toss spaghetti with pancetta and garlic, then remove from heat.\",\r\n        \"Mix in the egg mixture, adding reserved pasta water to create a creamy sauce.\",\r\n        \"Season with salt and black pepper to taste.\",\r\n        \"Serve immediately with extra Parmesan cheese.\"\r\n    ],\r\n    \"prep_time_minutes\": 10,\r\n    \"cook_time_minutes\": 15,\r\n    \"servings\": 4,\r\n    \"difficulty\": \"Medium\",\r\n    \"cuisine\": \"Italian\",\r\n    \"calories_per_serving\": 450,\r\n    \"tags\": [\r\n        \"Pasta\",\r\n        \"Italian\"\r\n    ],\r\n    \"user_id\": 167,\r\n    \"image\": \"https://cdn.dummyjson.com/recipe-images/2.webp\",\r\n    \"rating\": 4.8,\r\n    \"review_count\": 120,\r\n    \"meal_type\": [\r\n        \"Dinner\"\r\n    ]\r\n}",
+					"raw": "{\r\n    \"name\": \"Seblak Pedes Banget\",\r\n    \"ingredients\": [\r\n        \"Spaghetti\",\r\n        \"Egg yolks\",\r\n        \"Grated Parmesan cheese\",\r\n        \"Pancetta\",\r\n        \"Garlic\",\r\n        \"Salt and black pepper\",\r\n        \"Olive oil\"\r\n    ],\r\n    \"instructions\": [\r\n        \"Cook spaghetti in salted boiling water until al dente.\",\r\n        \"Cook pancetta in olive oil until crispy, then add minced garlic.\",\r\n        \"In a bowl, whisk egg yolks and Parmesan cheese.\",\r\n        \"Drain spaghetti, reserving some pasta water.\",\r\n        \"Toss spaghetti with pancetta and garlic, then remove from heat.\",\r\n        \"Mix in the egg mixture, adding reserved pasta water to create a creamy sauce.\",\r\n        \"Season with salt and black pepper to taste.\",\r\n        \"Serve immediately with extra Parmesan cheese.\"\r\n    ],\r\n    \"prep_time_minutes\": 10,\r\n    \"cook_time_minutes\": 15,\r\n    \"servings\": 4,\r\n    \"difficulty\": \"Medium\",\r\n    \"cuisine\": \"Italian\",\r\n    \"calories_per_serving\": 450,\r\n    \"tags\": [\"Pasta\", \"Italian\"],\r\n    \"user_id\": 167,\r\n    \"image\": \"https://cdn.dummyjson.com/recipe-images/2.webp\",\r\n    \"rating\": 4.8,\r\n    \"review_count\": 120,\r\n    \"meal_type\": \"lunch\",\r\n    \"price\": 10.3\r\n}\r\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -116,7 +106,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8084/api/recipes",
+					"raw": "http://localhost:8084/api/recipes/14",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -124,20 +114,21 @@
 					"port": "8084",
 					"path": [
 						"api",
-						"recipes"
+						"recipes",
+						"14"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "update",
+			"name": "updateRecipe",
 			"request": {
 				"method": "PUT",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"id\": 32,\r\n    \"name\": \"Spicy Spaghetti Carbonara\",\r\n    \"ingredients\": [\r\n        \"Spaghetti\",\r\n        \"Egg yolks\",\r\n        \"Grated Parmesan cheese\",\r\n        \"Pancetta\",\r\n        \"Garlic\",\r\n        \"Salt and black pepper\",\r\n        \"Olive oil\"\r\n    ],\r\n    \"instructions\": [\r\n        \"Cook spaghetti in salted boiling water until al dente.\",\r\n        \"Cook pancetta in olive oil until crispy, then add minced garlic.\",\r\n        \"In a bowl, whisk egg yolks and Parmesan cheese.\",\r\n        \"Drain spaghetti, reserving some pasta water.\",\r\n        \"Toss spaghetti with pancetta and garlic, then remove from heat.\",\r\n        \"Mix in the egg mixture, adding reserved pasta water to create a creamy sauce.\",\r\n        \"Season with salt and black pepper to taste.\",\r\n        \"Serve immediately with extra Parmesan cheese.\"\r\n    ],\r\n    \"prep_time_minutes\": 10,\r\n    \"cook_time_minutes\": 15,\r\n    \"servings\": 4,\r\n    \"difficulty\": \"Medium\",\r\n    \"cuisine\": \"Italian\",\r\n    \"calories_per_serving\": 450,\r\n    \"tags\": [\r\n        \"Pasta\",\r\n        \"Italian\"\r\n    ],\r\n    \"user_id\": 167,\r\n    \"image\": \"https://cdn.dummyjson.com/recipe-images/2.webp\",\r\n    \"rating\": 4.8,\r\n    \"review_count\": 120,\r\n    \"meal_type\": [\r\n        \"Dinner\"\r\n    ]\r\n}",
+					"raw": "{\r\n    \"name\": \"Seblak Pedes Banget\",\r\n    \"ingredients\": [\r\n        \"Spaghetti\",\r\n        \"Egg yolks\",\r\n        \"Grated Parmesan cheese\",\r\n        \"Pancetta\",\r\n        \"Garlic\",\r\n        \"Salt and black pepper\",\r\n        \"Olive oil\"\r\n    ],\r\n    \"instructions\": [\r\n        \"Cook spaghetti in salted boiling water until al dente.\",\r\n        \"Cook pancetta in olive oil until crispy, then add minced garlic.\",\r\n        \"In a bowl, whisk egg yolks and Parmesan cheese.\",\r\n        \"Drain spaghetti, reserving some pasta water.\",\r\n        \"Toss spaghetti with pancetta and garlic, then remove from heat.\",\r\n        \"Mix in the egg mixture, adding reserved pasta water to create a creamy sauce.\",\r\n        \"Season with salt and black pepper to taste.\",\r\n        \"Serve immediately with extra Parmesan cheese.\"\r\n    ],\r\n    \"prep_time_minutes\": 10,\r\n    \"cook_time_minutes\": 15,\r\n    \"servings\": 4,\r\n    \"difficulty\": \"Medium\",\r\n    \"cuisine\": \"Italian\",\r\n    \"calories_per_serving\": 450,\r\n    \"tags\": [\"Pasta\", \"Italian\"],\r\n    \"user_id\": 167,\r\n    \"image\": \"https://cdn.dummyjson.com/recipe-images/2.webp\",\r\n    \"rating\": 4.8,\r\n    \"review_count\": 120,\r\n    \"meal_type\": \"lunch\",\r\n    \"price\": 10.3\r\n}\r\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -145,7 +136,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8084/api/recipes/32",
+					"raw": "http://localhost:8084/api/recipes/3",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -154,19 +145,19 @@
 					"path": [
 						"api",
 						"recipes",
-						"32"
+						"3"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "delete",
+			"name": "deleteRecipe",
 			"request": {
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8084/api/recipes/32",
+					"raw": "http://localhost:8084/api/recipes/6",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -175,7 +166,7 @@
 					"path": [
 						"api",
 						"recipes",
-						"32"
+						"6"
 					]
 				}
 			},

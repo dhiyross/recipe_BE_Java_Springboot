@@ -1,0 +1,84 @@
+{
+	"info": {
+		"_postman_id": "7bd691ce-2a03-4b90-b22c-43f50a55d742",
+		"name": "Transaction",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38014292"
+	},
+	"item": [
+		{
+			"name": "findAllTransaction",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8084/transactions",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8084",
+					"path": [
+						"transactions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createTransaction",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"recipeId\": 1,\r\n  \"quantity\": 6,\r\n  \"customerId\": 123,\r\n  \"transactionDate\": \"2024-12-19\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8084/transactions",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8084",
+					"path": [
+						"transactions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateQuantity",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8084/transactions/10/update-quantity?newQuantity=6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8084",
+					"path": [
+						"transactions",
+						"10",
+						"update-quantity"
+					],
+					"query": [
+						{
+							"key": "newQuantity",
+							"value": "6"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
